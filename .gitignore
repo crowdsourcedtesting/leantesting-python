@@ -1,0 +1,9 @@
+/.eggs
+/build
+/dist
+/MANIFEST
+/leantesting.egg-info
+.python-version
+*.pyc
+*.egg
+*.class
