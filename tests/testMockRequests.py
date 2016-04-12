@@ -268,6 +268,19 @@ class MockRequestsTest(unittest.TestCase):
 		self.assertEqual(resp['meta']['pagination']['total'], col.total())
 		self.assertEqual(resp['meta']['pagination']['total_pages'], col.totalPages())
 		self.assertEqual(resp['meta']['pagination']['count'], col.count())
+	def testListProjectBugPriorityScheme(self):
+		colName = 'scheme'
+		retClass = ProjectBugScheme
+		resp = self._rcol(colName, ['_id', 'name'])
+		self._client.debugReturn = {'data': json.dumps(resp), 'status': 200}
+
+		col = Project(self._client, {'id': 0}).bugPriorityScheme.all()
+
+		self.assertEqual(resp[colName], col.toArray())
+		self.assertIsInstance(col._collection[0], retClass)
+		self.assertEqual(resp['meta']['pagination']['total'], col.total())
+		self.assertEqual(resp['meta']['pagination']['total_pages'], col.totalPages())
+		self.assertEqual(resp['meta']['pagination']['count'], col.count())
 	# END PROJECT
 
 
@@ -282,7 +295,7 @@ class MockRequestsTest(unittest.TestCase):
 		colName = 'bugs'
 		retClass = Bug
 		resp = self._rcol(colName, ['_id', 'title', '_status_id', '_severity_id', '_project_version_id',
-			'_project_section_id', '_type_id', '_reproducibility_id', '_assigned_user_id', 'description',
+			'_project_section_id', '_type_id', '_reproducibility_id', '_priority_id', '_assigned_user_id', 'description',
 			'expected_results'])
 		self._client.debugReturn = {'data': json.dumps(resp), 'status': 200}
 
@@ -296,13 +309,13 @@ class MockRequestsTest(unittest.TestCase):
 	def testCreateNewBug(self):
 		retClass = Bug
 		resp = self._robj(['_id', 'title', '_status_id', '_severity_id', '_project_version_id',
-			'_project_section_id', '_type_id', '_reproducibility_id', '_assigned_user_id', 'description',
+			'_project_section_id', '_type_id', '_reproducibility_id', '_priority_id', '_assigned_user_id', 'description',
 			'expected_results'])
 		self._client.debugReturn = {'data': json.dumps(resp), 'status': 200}
 
 		obj = Project(self._client, {'id': 0}).bugs.create({
 			'title': '', 'status_id': 0, 'severity_id': 0, 'project_version_id': 0, 'project_section_id': 0,
-			'type_id': 0, 'reproducibility_id': 0, 'assigned_user_id': 0, 'description': '',
+			'type_id': 0, 'reproducibility_id': 0, 'priority_id': 0, 'assigned_user_id': 0, 'description': '',
 			'expected_results': ''
 		})
 
@@ -311,7 +324,7 @@ class MockRequestsTest(unittest.TestCase):
 	def testRetrieveExistingBug(self):
 		retClass = Bug
 		resp = self._robj(['_id', 'title', '_status_id', '_severity_id', '_project_version_id',
-			'_project_section_id', '_type_id', '_reproducibility_id', '_assigned_user_id', 'description',
+			'_project_section_id', '_type_id', '_reproducibility_id', '_priority_id', '_assigned_user_id', 'description',
 			'expected_results'])
 		self._client.debugReturn = {'data': json.dumps(resp), 'status': 200}
 
@@ -322,13 +335,13 @@ class MockRequestsTest(unittest.TestCase):
 	def testUpdateBug(self):
 		retClass = Bug
 		resp = self._robj(['_id', 'title', '_status_id', '_severity_id', '_project_version_id',
-			'_project_section_id', '_type_id', '_reproducibility_id', '_assigned_user_id', 'description',
+			'_project_section_id', '_type_id', '_reproducibility_id', '_priority_id', '_assigned_user_id', 'description',
 			'expected_results'])
 		self._client.debugReturn = {'data': json.dumps(resp), 'status': 200}
 
 		obj = self._client.bugs.update(0, {
 			'title': '', 'status_id': 0, 'severity_id': 0, 'project_version_id': 0, 'project_section_id': 0,
-			'type_id': 0, 'assigned_user_id': 0, 'description': '', 'expected_results': ''
+			'type_id': 0, 'assigned_user_id': 0, 'description': '', 'expected_results': '', 'priority_id': 0
 		})
 
 		self.assertEqual(resp, obj.data)

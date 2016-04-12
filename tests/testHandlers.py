@@ -35,6 +35,7 @@ from Handler.Project.ProjectBugTypeSchemeHandler			import ProjectBugTypeSchemeHa
 from Handler.Project.ProjectBugStatusSchemeHandler			import ProjectBugStatusSchemeHandler
 from Handler.Project.ProjectBugSeveritySchemeHandler		import ProjectBugSeveritySchemeHandler
 from Handler.Project.ProjectBugReproducibilitySchemeHandler	import ProjectBugReproducibilitySchemeHandler
+from Handler.Project.ProjectBugPrioritySchemeHandler		import ProjectBugPrioritySchemeHandler
 
 from Handler.Project.ProjectBugsHandler	import ProjectBugsHandler
 
@@ -57,6 +58,7 @@ class HandlersTest(unittest.TestCase):
 		[PlatformTypeDevicesHandler,				'requiresIDInConstructor'],
 		[PlatformTypesHandler],
 		[ProjectBugReproducibilitySchemeHandler,	'requiresIDInConstructor'],
+		[ProjectBugPrioritySchemeHandler,			'requiresIDInConstructor'],
 		[ProjectBugSeveritySchemeHandler,			'requiresIDInConstructor'],
 		[ProjectBugsHandler,						'requiresIDInConstructor'],
 		[ProjectBugStatusSchemeHandler,				'requiresIDInConstructor'],

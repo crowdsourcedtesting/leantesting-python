@@ -46,6 +46,7 @@ from Handler.Project.ProjectBugTypeSchemeHandler			import ProjectBugTypeSchemeHa
 from Handler.Project.ProjectBugStatusSchemeHandler			import ProjectBugStatusSchemeHandler
 from Handler.Project.ProjectBugSeveritySchemeHandler		import ProjectBugSeveritySchemeHandler
 from Handler.Project.ProjectBugReproducibilitySchemeHandler	import ProjectBugReproducibilitySchemeHandler
+from Handler.Project.ProjectBugPrioritySchemeHandler		import ProjectBugPrioritySchemeHandler
 
 from Handler.Project.ProjectBugsHandler	import ProjectBugsHandler
 
@@ -79,6 +80,7 @@ class EntitiesTest(unittest.TestCase):
 			'bugStatusScheme'           : ProjectBugStatusSchemeHandler,
 			'bugSeverityScheme'         : ProjectBugSeveritySchemeHandler,
 			'bugReproducibilityScheme'  : ProjectBugReproducibilitySchemeHandler,
+			'bugPriorityScheme'  		: ProjectBugPrioritySchemeHandler,
 
 			'bugs'          : ProjectBugsHandler
 		}],

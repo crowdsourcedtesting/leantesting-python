@@ -33,6 +33,7 @@ class BugsHandler(EntityHandler):
 			'title'              : False,
 			'status_id'          : False,
 			'severity_id'        : False,
+			'priority_id'        : False,
 			'project_version_id' : False,
 			'project_section_id' : False,
 			'type_id'            : False,

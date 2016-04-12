@@ -8,6 +8,7 @@ from Handler.Project.ProjectBugTypeSchemeHandler            import ProjectBugTyp
 from Handler.Project.ProjectBugStatusSchemeHandler          import ProjectBugStatusSchemeHandler
 from Handler.Project.ProjectBugSeveritySchemeHandler        import ProjectBugSeveritySchemeHandler
 from Handler.Project.ProjectBugReproducibilitySchemeHandler import ProjectBugReproducibilitySchemeHandler
+from Handler.Project.ProjectBugPrioritySchemeHandler 		import ProjectBugPrioritySchemeHandler
 
 from Handler.Project.ProjectBugsHandler import ProjectBugsHandler
 
@@ -21,6 +22,7 @@ class Project(Entity):
 	bugStatusScheme          = None
 	bugSeverityScheme        = None
 	bugReproducibilityScheme = None
+	bugPriorityScheme 		 = None
 
 	bugs = None
 
@@ -35,5 +37,6 @@ class Project(Entity):
 		self.bugStatusScheme          = ProjectBugStatusSchemeHandler(origin, data['id'])
 		self.bugSeverityScheme        = ProjectBugSeveritySchemeHandler(origin, data['id'])
 		self.bugReproducibilityScheme = ProjectBugReproducibilitySchemeHandler(origin, data['id'])
+		self.bugPriorityScheme 		  = ProjectBugPrioritySchemeHandler(origin, data['id'])
 
 		self.bugs = ProjectBugsHandler(origin, data['id'])

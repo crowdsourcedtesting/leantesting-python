@@ -25,6 +25,7 @@ class ProjectBugsHandler(EntityHandler):
 			'project_section_id' : False,
 			'type_id'            : False,
 			'reproducibility_id' : False,
+		   	'priority_id'		 : False,
 			'assigned_user_id'   : False,
 			'description'        : False,
 			'expected_results'   : False,
