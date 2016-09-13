@@ -60,7 +60,7 @@ class OAuth2Handler:
 		elif not state is None and not isinstance(state, str):
 			raise SDKInvalidArgException('`state` must be a string')
 
-		baseURL = 'https://leantesting.com/login/oauth/authorize'
+		baseURL = 'https://app.leantesting.com/login/oauth/authorize'
 
 		params = {
 			'client_id'		: clientID,
@@ -123,7 +123,7 @@ class OAuth2Handler:
 			'/login/oauth/access_token',
 			'POST',
 			{
-				'base_uri'	: 'https://leantesting.com',
+				'base_uri'	: 'https://app.leantesting.com',
 				'params'	: params
 			}
 		)
