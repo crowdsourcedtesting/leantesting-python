@@ -106,6 +106,15 @@ class MockRequestsTest(unittest.TestCase):
 		self.assertEqual(resp['meta']['pagination']['total'], col.total())
 		self.assertEqual(resp['meta']['pagination']['total_pages'], col.totalPages())
 		self.assertEqual(resp['meta']['pagination']['count'], col.count())
+	def testRetrieveExistingUserOrganization(self):
+		retClass = UserOrganization
+		resp = self._robj(['_id', 'name', 'alias', 'url', 'logo'])
+		self._client.debugReturn = {'data': json.dumps(resp), 'status': 200}
+
+		obj = self._client.user.organizations.find(0)
+
+		self.assertEqual(resp, obj.data)
+		self.assertIsInstance(obj, retClass)
 	# END USER
 
 
