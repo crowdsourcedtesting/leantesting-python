@@ -29,6 +29,12 @@ from Handler.Project.ProjectsHandler	import ProjectsHandler
 
 from Handler.Project.ProjectSectionsHandler	import ProjectSectionsHandler
 from Handler.Project.ProjectVersionsHandler	import ProjectVersionsHandler
+
+from Handler.Project.ProjectTestCasesHandler	import ProjectTestCasesHandler
+from Handler.Project.ProjectTestRunsHandler	import ProjectTestRunsHandler
+
+from Handler.Project.ProjectWebhooksHandler	import ProjectWebhooksHandler
+
 from Handler.Project.ProjectUsersHandler	import ProjectUsersHandler
 
 from Handler.Project.ProjectBugTypeSchemeHandler			import ProjectBugTypeSchemeHandler
@@ -67,6 +73,9 @@ class HandlersTest(unittest.TestCase):
 		[ProjectsHandler],
 		[ProjectUsersHandler,						'requiresIDInConstructor'],
 		[ProjectVersionsHandler,					'requiresIDInConstructor'],
+		[ProjectTestCasesHandler,					'requiresIDInConstructor'],
+		[ProjectTestRunsHandler,					'requiresIDInConstructor'],
+		[ProjectWebhooksHandler,					'requiresIDInConstructor'],
 		[UserHandler],
 		[UserOrganizationsHandler]
 	]

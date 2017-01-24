@@ -1,22 +1,26 @@
 from BaseClass.Entity import Entity
-
-from Handler.Project.ProjectSectionsHandler import ProjectSectionsHandler
-from Handler.Project.ProjectVersionsHandler import ProjectVersionsHandler
-from Handler.Project.ProjectUsersHandler    import ProjectUsersHandler
-
-from Handler.Project.ProjectBugTypeSchemeHandler            import ProjectBugTypeSchemeHandler
-from Handler.Project.ProjectBugStatusSchemeHandler          import ProjectBugStatusSchemeHandler
-from Handler.Project.ProjectBugSeveritySchemeHandler        import ProjectBugSeveritySchemeHandler
-from Handler.Project.ProjectBugReproducibilitySchemeHandler import ProjectBugReproducibilitySchemeHandler
 from Handler.Project.ProjectBugPrioritySchemeHandler 		import ProjectBugPrioritySchemeHandler
-
+from Handler.Project.ProjectBugReproducibilitySchemeHandler import ProjectBugReproducibilitySchemeHandler
+from Handler.Project.ProjectBugSeveritySchemeHandler        import ProjectBugSeveritySchemeHandler
+from Handler.Project.ProjectBugStatusSchemeHandler          import ProjectBugStatusSchemeHandler
+from Handler.Project.ProjectBugTypeSchemeHandler            import ProjectBugTypeSchemeHandler
 from Handler.Project.ProjectBugsHandler import ProjectBugsHandler
+from Handler.Project.ProjectSectionsHandler import ProjectSectionsHandler
+from Handler.Project.ProjectTestCasesHandler import ProjectTestCasesHandler
+from Handler.Project.ProjectTestRunsHandler import ProjectTestRunsHandler
+from Handler.Project.ProjectUsersHandler    import ProjectUsersHandler
+from Handler.Project.ProjectVersionsHandler import ProjectVersionsHandler
+from Handler.Project.ProjectWebhooksHandler import ProjectWebhooksHandler
 
 class Project(Entity):
 
 	sections = None
 	versions = None
 	users    = None
+
+	testRuns    = None
+	testCases    = None
+	webhooks    = None
 
 	bugTypeScheme            = None
 	bugStatusScheme          = None
@@ -32,6 +36,10 @@ class Project(Entity):
 		self.sections = ProjectSectionsHandler(origin, data['id'])
 		self.versions = ProjectVersionsHandler(origin, data['id'])
 		self.users    = ProjectUsersHandler(origin, data['id'])
+
+		self.testRuns  = ProjectTestRunsHandler(origin, data['id'])
+		self.testCases = ProjectTestCasesHandler(origin, data['id'])
+		self.webhooks  = ProjectWebhooksHandler(origin, data['id'])
 
 		self.bugTypeScheme            = ProjectBugTypeSchemeHandler(origin, data['id'])
 		self.bugStatusScheme          = ProjectBugStatusSchemeHandler(origin, data['id'])

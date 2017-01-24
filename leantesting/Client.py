@@ -53,7 +53,7 @@ class Client:
 	def getCurrentToken(self):
 		"""
 
-		Function to retrieve curently attached token.
+		Function to retrieve currently attached token.
 
 		Keyword arguments:
 		self Client -- Self instance

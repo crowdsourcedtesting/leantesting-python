@@ -1,6 +1,6 @@
 # Lean Testing Python SDK
 
-**Python client for [Lean Testing API](https://leantesting.com/en/api-docs)**
+**Python client for [Lean Testing](https://leantesting.com/) API**
 
 You can sign up for a Lean Testing account at [https://leantesting.com](https://leantesting.com).
 
@@ -136,12 +136,32 @@ newVersion = leantesting.projects.find(3515).versions.create({
 print( newVersion.data )
 ```
 
+- List **Project Test cases**
+
+```python
+leantesting.projects.find(3515).testCases.all().toArray()
+```
+
+- List **Project Test runs**
+
+```python
+leantesting.projects.find(3515).testRuns.all().toArray()
+```
+
+- Retrieve **Test run** results
+```python
+leantesting.projects.find(3515).testRuns.find(123).data
+```
 
 - List **Project Users**
 ```python
 leantesting.projects.find(3515).users.all().toArray()
 ```
 
+- Remove **Project Users**
+```python
+leantesting.projects.find(3515).users.delete(123)
+```
 
 - List **Bug Type Scheme**
 ```python

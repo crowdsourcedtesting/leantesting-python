@@ -5,17 +5,18 @@ from Entity.Bug.Bug import Bug
 
 class BugsHandler(EntityHandler):
 
-	def find(self, id_):
+	def find(self, id_, params = None):
 		super().find(id_)
+
+		if params is None:
+			params = {}
 
 		req = APIRequest(
 			self._origin,
 			'/v1/bugs/' + str(id_),
 			'GET',
 			{
-				'params': {
-					'include': 'steps,platform,attachments,comments,tags'
-				}
+				'params': params
 			}
 		)
 		return Bug(self._origin, req.exec_())

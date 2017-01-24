@@ -38,3 +38,19 @@ class ProjectSectionsHandler(EntityHandler):
 
 		request = APIRequest(self._origin, '/v1/projects/' + str(self._projectID) + '/sections', 'GET')
 		return EntityList(self._origin, request, ProjectSection, filters)
+
+	def find(self, id_, params = None):
+		super().find(id_)
+
+		if params is None:
+			params = {}
+
+		req = APIRequest(
+			self._origin,
+			'/v1/projects/' + str(self._projectID) + '/sections/' + str(id_),
+			'GET',
+			{
+				'params': params
+			}
+		)
+		return ProjectSection(self._origin, req.exec_())
