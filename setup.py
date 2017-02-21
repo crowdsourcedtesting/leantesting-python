@@ -10,7 +10,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 setup(
     name='leantesting',
 
-    version='1.2.0',
+    version='2.0.0',
 
     description='Lean Testing Python SDK',
     long_description=long_description,

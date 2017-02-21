@@ -129,4 +129,4 @@ class OAuth2Handler:
 		)
 
 		resp = req.exec_()
-		return resp['access_token']
+		return resp
