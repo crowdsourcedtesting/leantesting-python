@@ -13,6 +13,34 @@ class ProjectUsersHandler(EntityHandler):
 
 		self._projectID = projectID
 
+	def create(self, fields):
+		super().create(fields)
+
+		supports = {
+			'email': True,
+			'role_slug': True
+		}
+
+		if self.enforce(fields, supports):
+			req = APIRequest(
+				self._origin,
+				'/v1/projects/' + str(self._projectID) + '/users',
+				'POST',
+				{'params': fields}
+			)
+
+			return ProjectUser(self._origin, req.exec_())
+
+	def delete(self, id_):
+		super().delete(id_)
+
+		req = APIRequest(
+			self._origin,
+			'/v1/projects/' + str(self._projectID) + '/users/' + str(id_),
+			'DELETE'
+		)
+		return req.exec_()
+
 	def all(self, filters = None):
 		if filters is None:
 			filters = {}

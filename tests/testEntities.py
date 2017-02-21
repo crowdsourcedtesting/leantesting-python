@@ -27,7 +27,13 @@ from Entity.Project.Project					import Project
 from Entity.Project.ProjectBugScheme		import ProjectBugScheme
 from Entity.Project.ProjectSection			import ProjectSection
 from Entity.Project.ProjectUser				import ProjectUser
-from Entity.Project.ProjectVersion			import ProjectVersion
+from Entity.Project.ProjectVersion				import ProjectVersion
+
+from Entity.Project.ProjectTestCase			import ProjectTestCase
+from Entity.Project.ProjectTestRun			import ProjectTestRun
+from Entity.Project.ProjectTestResult			import ProjectTestResult
+
+from Entity.Project.ProjectWebhook			import ProjectWebhook
 
 from Entity.User.UserOrganization	import UserOrganization
 
@@ -42,6 +48,11 @@ from Handler.Project.ProjectSectionsHandler	import ProjectSectionsHandler
 from Handler.Project.ProjectVersionsHandler	import ProjectVersionsHandler
 from Handler.Project.ProjectUsersHandler	import ProjectUsersHandler
 
+from Handler.Project.ProjectTestCasesHandler	import ProjectTestCasesHandler
+from Handler.Project.ProjectTestRunsHandler	import ProjectTestRunsHandler
+
+from Handler.Project.ProjectWebhooksHandler	import ProjectWebhooksHandler
+
 from Handler.Project.ProjectBugTypeSchemeHandler			import ProjectBugTypeSchemeHandler
 from Handler.Project.ProjectBugStatusSchemeHandler			import ProjectBugStatusSchemeHandler
 from Handler.Project.ProjectBugSeveritySchemeHandler		import ProjectBugSeveritySchemeHandler
@@ -52,7 +63,7 @@ from Handler.Project.ProjectBugsHandler	import ProjectBugsHandler
 
 class EntitiesTest(unittest.TestCase):
 
-	_entityColllection = [
+	_entityCollection = [
 		[Bug, {
 			'comments'      : BugCommentsHandler,
 			'attachments'   : BugAttachmentsHandler
@@ -76,6 +87,11 @@ class EntitiesTest(unittest.TestCase):
 			'versions'      : ProjectVersionsHandler,
 			'users'         : ProjectUsersHandler,
 
+			'testCases'     : ProjectTestCasesHandler,
+			'testRuns'      : ProjectTestRunsHandler,
+
+			'webhooks'      : ProjectWebhooksHandler,
+
 			'bugTypeScheme'             : ProjectBugTypeSchemeHandler,
 			'bugStatusScheme'           : ProjectBugStatusSchemeHandler,
 			'bugSeverityScheme'         : ProjectBugSeveritySchemeHandler,
@@ -88,36 +104,40 @@ class EntitiesTest(unittest.TestCase):
 		[ProjectSection],
 		[ProjectUser],
 		[ProjectVersion],
+		[ProjectTestCase],
+		[ProjectTestRun],
+		[ProjectTestResult],
+		[ProjectWebhook],
 		[UserOrganization]
 	]
 
 
 	def testEntitiesDefined(self):
-		for e in self._entityColllection:
+		for e in self._entityCollection:
 			e[0]
 
 	def testEntitiesCorrectParent(self):
-		for e in self._entityColllection:
+		for e in self._entityCollection:
 			self.assertIsInstance(e[0](Client(), {'id': 1}), Entity)
 
 	def testEntitiesDataParsing(self):
 		data = {'id': 1, 'YY': 'strstr', 'FF': [1, 2, 3, 'asdasdasd'], 'GG': {'test1': True, 'test2': []}}
-		for e in self._entityColllection:
+		for e in self._entityCollection:
 			self.assertIs((e[0](Client(), data)).data, data)
 
 
 
 	def testEntitiesInstanceNonArrData(self):
-		for e in self._entityColllection:
+		for e in self._entityCollection:
 			self.assertRaises(SDKInvalidArgException, e[0], Client(), '')
 	def testEntitiesInstanceEmptyData(self):
-		for e in self._entityColllection:
+		for e in self._entityCollection:
 			self.assertRaises(SDKInvalidArgException, e[0], Client(), {})
 
 
 
 	def testEntitiesHaveSecondaries(self):
-		for e in self._entityColllection:
+		for e in self._entityCollection:
 			if not 0 <= 1 < len(e):
 				continue
 
