@@ -22,7 +22,7 @@ class OAuth2Handler:
 
 		Keyword arguments:
 		self   OAuth2Handler -- Self instance
-		origin Client      -- Originating client reference
+		origin Client        -- Originating client reference
 
 		"""
 
@@ -63,9 +63,9 @@ class OAuth2Handler:
 		baseURL = 'https://app.leantesting.com/login/oauth/authorize'
 
 		params = {
-			'client_id'		: clientID,
-			'redirect_uri'	: redirectURI,
-			'scope'			: scope
+			'client_id'   : clientID,
+			'redirect_uri': redirectURI,
+			'scope'       : scope
 		}
 
 		if not state is None:
@@ -111,11 +111,11 @@ class OAuth2Handler:
 			raise SDKInvalidArgException('`redirectURI` must be a string')
 
 		params = {
-			'grant_type'	: grantType,
-			'client_id'		: clientID,
-			'client_secret'	: clientSecret,
-			'redirect_uri'	: redirectURI,
-			'code'			: code
+			'grant_type'   : grantType,
+			'client_id'    : clientID,
+			'client_secret': clientSecret,
+			'redirect_uri' : redirectURI,
+			'code'         : code
 		}
 
 		req = APIRequest(
@@ -123,8 +123,8 @@ class OAuth2Handler:
 			'/login/oauth/access_token',
 			'POST',
 			{
-				'base_uri'	: 'https://app.leantesting.com',
-				'params'	: params
+				'base_uri': 'https://app.leantesting.com',
+				'params'  : params
 			}
 		)
 

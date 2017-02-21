@@ -22,9 +22,9 @@ class APIRequest:
 	"""
 
 	_default_opts = {								# Basic support for extended opts
-		'base_uri'	:'https://api.leantesting.com',	# assumed default for API base
-		'form_data'	: False,						# sets content type to multipart/form-data if true
-		'params'	: {}							# params to be passed in request
+		'base_uri' :'https://api.leantesting.com',	# assumed default for API base
+		'form_data': False,							# sets content type to multipart/form-data if true
+		'params'   : {}								# params to be passed in request
 	}
 
 	_origin   = None
@@ -39,11 +39,11 @@ class APIRequest:
 
 		Keyword arguments:
 		self     APIRequest -- Self instance
-		origin   Client   -- Originating client reference
+		origin   Client     -- Originating client reference
 		endpoint str        -- API endpoint
 		method   str        -- Method for cURL call - supports GET, POST, PUT or DELETE only
 		opts     dict       -- (optional) Additional options to pass to request.
-								Request parameters (if any) must bep assed here.
+								Request parameters (if any) must be passed here.
 
 		Exceptions:
 		SDKInvalidArgException if method is non-string.
@@ -156,7 +156,7 @@ class APIRequest:
 		ch = None
 
 		return {
-			'data': curlData,
+			'data'  : curlData,
 			'status': curlStatus
 		}
 
@@ -169,7 +169,7 @@ class APIRequest:
 		self APIRequest -- Self instance
 
 		Exceptions:
-		SDKErrorResponseException   if the remote response is an error.
+		SDKErrorResponseException if the remote response is an error.
 			A server response is interpreted as an error if obtained status code differs from expected status code.
 			Expected status codes are `200 OK` for GET/POST/PUT, `204 No Content` for DELETE.
 		SDKBadJSONResponseException if the remote response contains erronated or invalid JSON contents
@@ -184,12 +184,12 @@ class APIRequest:
 		'data' in self._origin.debugReturn.keys() and \
 		'status' in self._origin.debugReturn.keys():
 
-			curlData = self._origin.debugReturn['data']
+			curlData   = self._origin.debugReturn['data']
 			curlStatus = self._origin.debugReturn['status']
 
 		else:
-			call = self.call()
-			curlData = call['data']
+			call       = self.call()
+			curlData   = call['data']
 			curlStatus = call['status']
 
 		if self._method == 'DELETE':
@@ -198,7 +198,7 @@ class APIRequest:
 			expectedHTTPStatus = 200
 
 		if curlStatus != expectedHTTPStatus:
-				raise SDKErrorResponseException(str(curlStatus) + ' - ' + curlData)
+			raise SDKErrorResponseException(str(curlStatus) + ' - ' + curlData)
 
 		if self._method == 'DELETE':		# if DELETE request, expect no output
 			return True

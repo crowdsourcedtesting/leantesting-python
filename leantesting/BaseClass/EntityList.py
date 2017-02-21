@@ -70,7 +70,7 @@ class EntityList:
 
 		Keyword arguments:
 		self       EntityList -- Self instance
-		origin     Client   -- Original client instance reference
+		origin     Client     -- Original client instance reference
 		request    APIRequest -- An API Request definition given by the entity collection handler. This is used for any
 							subsequent collection regeneration, as any data updates are dependant on external requests.
 		identifier class      -- class definition to use for dynamic class instancing within list collection
@@ -163,7 +163,7 @@ class EntityList:
 
 		"""
 
-		if  self._realPage > self._pagination['total_pages']:
+		if self._realPage > self._pagination['total_pages']:
 			raise StopIteration
 
 		ret = self.toArray()

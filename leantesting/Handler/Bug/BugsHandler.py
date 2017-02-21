@@ -54,6 +54,7 @@ class BugsHandler(EntityHandler):
 		if self.enforce(fields, supports):
 			initFields = {'include': 'steps,platform'}
 			initFields.update(fields)
+
 			fields = initFields
 
 			req = APIRequest(self._origin, '/v1/bugs/' + str(id_), 'PUT', {'params': fields})

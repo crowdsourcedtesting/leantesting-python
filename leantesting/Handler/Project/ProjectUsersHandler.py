@@ -17,7 +17,7 @@ class ProjectUsersHandler(EntityHandler):
 		super().create(fields)
 
 		supports = {
-			'email': True,
+			'email'    : True,
 			'role_slug': True
 		}
 

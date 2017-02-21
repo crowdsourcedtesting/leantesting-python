@@ -26,7 +26,7 @@ class EntityHandler:
 
 		Keyword arguments:
 		self   EntityHandler -- Self instance
-		origin Client      -- Originating client reference
+		origin Client        -- Originating client reference
 
 		"""
 
