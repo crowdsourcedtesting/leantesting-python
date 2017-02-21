@@ -1,16 +1,17 @@
 from BaseClass.Entity import Entity
+
 from Handler.Project.ProjectBugPrioritySchemeHandler 		import ProjectBugPrioritySchemeHandler
-from Handler.Project.ProjectBugReproducibilitySchemeHandler import ProjectBugReproducibilitySchemeHandler
-from Handler.Project.ProjectBugSeveritySchemeHandler        import ProjectBugSeveritySchemeHandler
-from Handler.Project.ProjectBugStatusSchemeHandler          import ProjectBugStatusSchemeHandler
-from Handler.Project.ProjectBugTypeSchemeHandler            import ProjectBugTypeSchemeHandler
-from Handler.Project.ProjectBugsHandler import ProjectBugsHandler
-from Handler.Project.ProjectSectionsHandler import ProjectSectionsHandler
-from Handler.Project.ProjectTestCasesHandler import ProjectTestCasesHandler
-from Handler.Project.ProjectTestRunsHandler import ProjectTestRunsHandler
-from Handler.Project.ProjectUsersHandler    import ProjectUsersHandler
-from Handler.Project.ProjectVersionsHandler import ProjectVersionsHandler
-from Handler.Project.ProjectWebhooksHandler import ProjectWebhooksHandler
+from Handler.Project.ProjectBugReproducibilitySchemeHandler	import ProjectBugReproducibilitySchemeHandler
+from Handler.Project.ProjectBugSeveritySchemeHandler		import ProjectBugSeveritySchemeHandler
+from Handler.Project.ProjectBugStatusSchemeHandler			import ProjectBugStatusSchemeHandler
+from Handler.Project.ProjectBugTypeSchemeHandler			import ProjectBugTypeSchemeHandler
+from Handler.Project.ProjectBugsHandler						import ProjectBugsHandler
+from Handler.Project.ProjectSectionsHandler					import ProjectSectionsHandler
+from Handler.Project.ProjectTestCasesHandler				import ProjectTestCasesHandler
+from Handler.Project.ProjectTestRunsHandler					import ProjectTestRunsHandler
+from Handler.Project.ProjectUsersHandler					import ProjectUsersHandler
+from Handler.Project.ProjectVersionsHandler					import ProjectVersionsHandler
+from Handler.Project.ProjectWebhooksHandler					import ProjectWebhooksHandler
 
 class Project(Entity):
 
@@ -18,15 +19,15 @@ class Project(Entity):
 	versions = None
 	users    = None
 
-	testRuns    = None
-	testCases    = None
-	webhooks    = None
+	testRuns  = None
+	testCases = None
+	webhooks  = None
 
 	bugTypeScheme            = None
 	bugStatusScheme          = None
 	bugSeverityScheme        = None
 	bugReproducibilityScheme = None
-	bugPriorityScheme 		 = None
+	bugPriorityScheme        = None
 
 	bugs = None
 
@@ -45,6 +46,6 @@ class Project(Entity):
 		self.bugStatusScheme          = ProjectBugStatusSchemeHandler(origin, data['id'])
 		self.bugSeverityScheme        = ProjectBugSeveritySchemeHandler(origin, data['id'])
 		self.bugReproducibilityScheme = ProjectBugReproducibilitySchemeHandler(origin, data['id'])
-		self.bugPriorityScheme 		  = ProjectBugPrioritySchemeHandler(origin, data['id'])
+		self.bugPriorityScheme        = ProjectBugPrioritySchemeHandler(origin, data['id'])
 
 		self.bugs = ProjectBugsHandler(origin, data['id'])
