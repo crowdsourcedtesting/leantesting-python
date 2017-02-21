@@ -22,16 +22,16 @@ class Client:
 
 	"""
 
-	_accessToken  = None
+	_accessToken = None
 
-	auth		= None
-	user		= None
-	projects	= None
-	bugs		= None
-	attachments	= None
-	platform	= None
+	auth         = None
+	user         = None
+	projects     = None
+	bugs         = None
+	attachments  = None
+	platform     = None
 
-	debugReturn = None
+	debugReturn  = None
 
 	def __init__(self):
 		"""
@@ -43,12 +43,12 @@ class Client:
 
 		"""
 
-		self.auth			= OAuth2Handler(self)
-		self.user			= UserHandler(self)
-		self.projects		= ProjectsHandler(self)
-		self.bugs			= BugsHandler(self)
-		self.attachments	= AttachmentsHandler(self)
-		self.platform		= PlatformHandler(self)
+		self.auth        = OAuth2Handler(self)
+		self.user        = UserHandler(self)
+		self.projects    = ProjectsHandler(self)
+		self.bugs        = BugsHandler(self)
+		self.attachments = AttachmentsHandler(self)
+		self.platform    = PlatformHandler(self)
 
 	def getCurrentToken(self):
 		"""
@@ -77,7 +77,7 @@ class Client:
 
 		Keyword arguments:
 		self        Client -- Self instance
-		accessToken str      -- the string of the token to be attached
+		accessToken str    -- the string of the token to be attached
 
 		Exceptions:
 		SDKInvalidArgException if provided accessToken param is not a string

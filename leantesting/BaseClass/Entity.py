@@ -7,8 +7,8 @@ class Entity:
 
 	"""
 
-	origin	= None # Reference to originating Client instance
-	data	= None # Internal entity object data
+	origin = None # Reference to originating Client instance
+	data   = None # Internal entity object data
 
 	def __init__(self, origin, data):
 		"""
@@ -16,9 +16,9 @@ class Entity:
 		Constructs an Entity instance
 
 		Keyword arguments:
-		self   Entity   -- Self instance
+		self   Entity -- Self instance
 		origin Client -- Original client instance reference
-		data   dict     -- Data to be contained in the new Entity. Must be non-empty.
+		data   dict   -- Data to be contained in the new Entity. Must be non-empty.
 
 		Exceptions:
 		SDKInvalidArgException if provided data param is not a dictionary.
